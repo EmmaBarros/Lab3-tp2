@@ -5,7 +5,7 @@ import Consola.Consola;
  *
  * @author emami
  */
-public class Pago {
+public class Pago implements Comparable<Pago>{
     protected double monto;
 
     public Pago(double monto) {
@@ -31,6 +31,19 @@ public class Pago {
     private void setMonto(double monto) {
         this.monto = monto;
     }
+
+    @Override
+    public int compareTo(Pago o) {
+        if(this.monto == o.getMonto()){
+        return 0;    
+        }else
+            if(this.monto > o.monto){
+            return 1;
+        }else{
+                return -1;
+            }
+        
     
    
+}
 }

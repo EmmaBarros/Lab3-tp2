@@ -50,7 +50,7 @@ public class Pocion extends Item {
 
     @Override
     public String toString() {
-        return super.toString()+ "Pocion nivel = " + nivel;
+        return super.toString()+ "tipo : Pocion | nivel = " + nivel;
     }
 
     public int getNivel() {

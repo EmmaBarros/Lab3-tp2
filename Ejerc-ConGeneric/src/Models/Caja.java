@@ -1,7 +1,7 @@
 package Models;
-import Menu.Menu;
+
 import Consola.Consola;
-import ED.ListaEncadenada;
+import ED.Lista;
 import ED.Nodo;
 /**
  *
@@ -9,35 +9,58 @@ import ED.Nodo;
  */
 public class Caja <T extends Item> {
     
-    private T obj;
+  private Lista<T> inventario;
+  private String nombreInventario;
 
-    public Caja() {
+    public Caja(String nombre) {
+    this.nombreInventario = nombre;
+    this.inventario = new Lista<>();
     }
        
     public void guardarObjeto(T obj){
-            
-       
+        if (obj != null) {
+            inventario.insertarPri(obj);
+            Consola.emitirMensajeLN(obj.getNombre()+ "guardado en "+nombreInventario);
+        }
     }
-    public T obtenerObjeto(T obj){
+    public void obtenerObjeto(T obj){
         
     }
+    
     public void mostrarCaja(){
+        Consola.emitirMensajeLN(nombreInventario);
+        if(inventario.listaVacia()){
+            Consola.emitirMensajeLN("el inventario esta vacio!");
+            return ;
+        }
+        Nodo<T> p = inventario.inicio();
+        while(p!=null){
+            p.getDato().mostrarInfo();
+            p.getDato().usar();
+            Consola.emitirMensajeLN("---------");
+            p = p.getPs();
+        }
         
     }
-    
-    
-    
-    public Caja(T obj) {
-        this.obj = obj;
+
+    public Lista<T> getInventario() {
+        return inventario;
     }
 
-    public T getObj() {
-        return obj;
+    public void setInventario(Lista<T> inventario) {
+        this.inventario = inventario;
     }
 
-    private void setObj(T obj) {
-        this.obj = obj;
+    public String getNombreInventario() {
+        return nombreInventario;
     }
+
+    public void setNombreInventario(String nombreInventario) {
+        this.nombreInventario = nombreInventario;
+    }
+    
+    
+    
     
     
     

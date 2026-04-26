@@ -1,7 +1,7 @@
 
 package Controllers;
 import Models.*;
-import ED.ListaEncadenada;
+import ED.Lista;
 import ED.Nodo;
 import Consola.Consola;
         
@@ -10,10 +10,10 @@ import Consola.Consola;
  * @author emami
  */
 public class GestorPagos {
-    private ListaEncadenada<Pago> listaPagos;
+    private Lista<Pago> listaPagos;
 
     public GestorPagos() {
-        this.listaPagos = new ListaEncadenada<>();
+        this.listaPagos = new Lista<>();
     }
     
     public void registrarPagoTarjeta(){

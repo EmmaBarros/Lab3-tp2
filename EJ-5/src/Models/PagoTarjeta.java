@@ -4,8 +4,9 @@ import Consola.Consola;
  *
  * @author emami
  */
-public class PagoTarjeta extends Pago{
-
+public class PagoTarjeta extends Pago {
+    private int nroTarjeta;
+    
     public PagoTarjeta(double monto) {
         super(monto);
     }
@@ -14,12 +15,15 @@ public class PagoTarjeta extends Pago{
     }
    @Override
    public void procesar(){
-    Consola.emitirMensajeLN("Pago de ; $"+monto+" Realizado con Exito");
    }
 
     @Override
     public String toString() {
         return super.toString()+"Pago : Tarjeta";
+    }
+
+    @Override
+    public void mostrarComprobante() {
     }
    
 }

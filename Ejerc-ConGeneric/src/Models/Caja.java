@@ -19,6 +19,7 @@ public class Caja <T extends Item> {
        
     public void guardarObjeto(T obj){
         if (obj != null) {
+            
             inventario.insertarPri(obj);
             Consola.emitirMensajeLN(obj.getNombre()+ "guardado en "+nombreInventario);
         }
@@ -26,6 +27,24 @@ public class Caja <T extends Item> {
     public void obtenerObjeto(T obj){
         
     }
+    
+    /*
+    private Object buscarItem(String nom){
+        if(!inventario.listaVacia()){
+            Consola.emitirMensajeLN("la lista esta vacia");
+            return null;
+        }
+        Nodo<T> p = inventario.inicio();
+        while (p!= null){
+            if(p.getDato().getNombre().equals(nom)){
+                return p.getDato();
+            }
+             p = p.getPs();
+
+        }   
+        return null;
+    } 
+    */
     
     public void mostrarCaja(){
         Consola.emitirMensajeLN(nombreInventario);

@@ -1,11 +1,12 @@
 
 package Models;
 import Consola.Consola;
+import Controllers.Icomprobante;
 /**
  *
  * @author emami
  */
-public class Pago implements Comparable<Pago>{
+public abstract class Pago implements Icomprobante{
     protected double monto;
 
     public Pago(double monto) {
@@ -13,11 +14,27 @@ public class Pago implements Comparable<Pago>{
     }
     
     public Pago() {
+        this.monto = 0;
     }
     
-    public void procesar(){
-        Consola.emitirMensajeLN("procesando el pago de : $"+monto);
+    private void ingresarMonto(){
+        double m;
+        do{
+           Consola.emitirMensajeLN("ingrese el monto a pagar");
+           m = Consola.leerDouble();
+           if(!validarMonto(m)){
+               Consola.emitirMensajeLN("ingreso incorrecto , intente nuevamente");
+           }
+        }while(!validarMonto(m));
+        setMonto(m);
     }
+    
+    private boolean validarMonto(double m){
+        return m >= 0;
+    }
+    
+    public abstract void procesar();
+    
 
     @Override
     public String toString() {
@@ -32,18 +49,8 @@ public class Pago implements Comparable<Pago>{
         this.monto = monto;
     }
 
-    @Override
-    public int compareTo(Pago o) {
-        if(this.monto == o.getMonto()){
-        return 0;    
-        }else
-            if(this.monto > o.monto){
-            return 1;
-        }else{
-                return -1;
-            }
         
     
    
 }
-}
+
